@@ -51,6 +51,20 @@
           "description": "Subnet 2 の名前"
         }
       },
+      "subnet3Prefix": {
+        "type": "string",
+        "defaultValue": "10.1.3.0/24",
+        "metadata": {
+          "description": "Subnet 3 のサブネット アドレス範囲"
+        }
+      },
+      "subnet3Name": {
+        "type": "string",
+        "defaultValue": "Subnet-3",
+        "metadata": {
+          "description": "Subnet 3 の名前"
+        }
+      },
       "bastionHostName": {
         "type": "string",
         "defaultValue": "Bastion-host",
@@ -113,6 +127,19 @@
             ],
             "properties": {
                 "addressPrefix": "[parameters('subnet2Prefix')]"
+            }
+          },
+          {
+            "apiVersion": "2018-10-01",
+            "type": "subnets",
+            "location": "[variables('location')]",
+            "name": "[parameters('subnet3Name')]",
+            "dependsOn": [
+              "[parameters('vnetName')]",
+              "[parameters('subnet2Name')]"
+            ],
+            "properties":{
+              "addressPrefix": "[parameters('subnet3Prefix')]"
             }
           }
         ]

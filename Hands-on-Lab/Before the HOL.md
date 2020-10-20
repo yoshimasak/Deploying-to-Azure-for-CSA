@@ -12,6 +12,7 @@ Oct 2020
   - [Task 2: 仮想ネットワークのプロビジョニング](#task-2-仮想ネットワークのプロビジョニング)
   - [Task 3: Active Directory Domain Services の構築](#task-3-active-directory-domain-services-の構築)
   - [Task 4: 仮想マシンのプロビジョニング](#task-4-仮想マシンのプロビジョニング)
+  - [Task 5: Azure Backup のプロビジョニング](#task-5-azure-backup-のプロビジョニング)
 
 ## Task 1: リソース グループのプロビジョニング
 
@@ -37,11 +38,13 @@ Oct 2020
 - **subnet1Name**: サブネットの名前
 - **subnet2Prefix**: サブネット アドレス範囲
 - **subnet2Name**: サブネットの名前
+- **subnet3Prefix**: サブネット アドレス範囲
+- **subnet3Name**: サブネットの名前
 - **bastionHostName**: Azure Bastion のホスト名
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-vnet-two-subnets-with-bastion.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-vnet-three-subnets-with-bastion.json)
 
 <br />
 
@@ -55,13 +58,13 @@ Oct 2020
 - **adminUsername**: 管理者アカウント名
 - **adminPassword**: パスワード
 
-### 展開後の手動設定
-- 仮想マシン展開後のドメイン コントローラーへの昇格
-- 仮想ネットワークの DNS サーバーをカスタムに変更し、展開したドメイン コントローラーの IP アドレスを設定
-
 <br />
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-as-domain-controller.json)
+
+### 展開後の手動設定
+- 仮想マシン展開後のドメイン コントローラーへの昇格
+- 仮想ネットワークの DNS サーバーをカスタムに変更し、展開したドメイン コントローラーの IP アドレスを設定
 
 <br />
 
@@ -82,6 +85,11 @@ Oct 2020
 - **sqlVMSize**: SQL Server の仮想マシン インスタンス サイズ (Standard_D2s_v3)
 - **adminUsername**: 管理者アカウント名
 - **adminPassword**: パスワード
+
+<br />
+
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-web-and-sql.json)
+
 
 ### 展開後の手動設定
 - Web サーバー
@@ -106,6 +114,5 @@ Oct 2020
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-web-and-sql.json)
-
-<br />
+## Task 5: Azure Backup のプロビジョニング
+SQL Server on VM のバックアップを構成
