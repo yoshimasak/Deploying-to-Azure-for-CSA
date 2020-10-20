@@ -1,0 +1,26 @@
+name: Deployment VNet with Azure Bastion
+
+on:
+  workflow_dispatch:
+    inputs:
+      resourceGroupName:
+        description: Resource Group Name
+        required: true
+      location:
+        description: Location
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script
+        run: echo Resource Group Name - ${{ github.event.inputs.resourceGroupName }}
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project
