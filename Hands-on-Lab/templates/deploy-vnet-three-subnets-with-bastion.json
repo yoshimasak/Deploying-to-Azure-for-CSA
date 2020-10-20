@@ -23,13 +23,6 @@
               "description": "Azure Bustion を展開するサブネット アドレス範囲（名前は AzureBastionSubnet で固定）"
           }
       },
-      "subnet1Prefix": {
-        "type": "string",
-        "defaultValue": "10.1.1.0/24",
-        "metadata": {
-          "description": "Subnet 1 のサブネット アドレス範囲"
-        }
-      },
       "subnet1Name": {
         "type": "string",
         "defaultValue": "Subnet-1",
@@ -37,11 +30,11 @@
           "description": "Subnet 1 の名前"
         }
       },
-      "subnet2Prefix": {
+      "subnet1Prefix": {
         "type": "string",
-        "defaultValue": "10.1.2.0/24",
+        "defaultValue": "10.1.1.0/24",
         "metadata": {
-          "description": "Subnet 2 のサブネット アドレス範囲"
+          "description": "Subnet 1 のサブネット アドレス範囲"
         }
       },
       "subnet2Name": {
@@ -51,11 +44,11 @@
           "description": "Subnet 2 の名前"
         }
       },
-      "subnet3Prefix": {
+      "subnet2Prefix": {
         "type": "string",
-        "defaultValue": "10.1.3.0/24",
+        "defaultValue": "10.1.2.0/24",
         "metadata": {
-          "description": "Subnet 3 のサブネット アドレス範囲"
+          "description": "Subnet 2 のサブネット アドレス範囲"
         }
       },
       "subnet3Name": {
@@ -63,6 +56,13 @@
         "defaultValue": "Subnet-3",
         "metadata": {
           "description": "Subnet 3 の名前"
+        }
+      },
+      "subnet3Prefix": {
+        "type": "string",
+        "defaultValue": "10.1.3.0/24",
+        "metadata": {
+          "description": "Subnet 3 のサブネット アドレス範囲"
         }
       },
       "bastionHostName": {
