@@ -1,0 +1,164 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnetResourceGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "仮想ネットワークのリソース グループ名"
+            }
+        },
+        "virtualNetworkId": {
+            "type": "string",
+            "metadata": {
+                "description": "仮想マシンを展開する仮想ネットワーク名"
+            }
+        },
+        "subnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "仮想マシンを展開するサブネット名"
+            }
+        },
+        "adminUsername": {
+            "type": "string", 
+            "defaultValue": "domainAdmin",
+            "metadata": {
+                "description": "管理者名"
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "管理者のパスワード"
+            }
+        }
+    },
+    "variables": {
+        "location": "[resourceGroup().location]",
+
+        "vnetId": "[parameters('virtualNetworkId')]",
+        "subnetRef": "[resourceID(parameters('vnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('virtualNetworkId'), parameters('subnetName'))]",
+
+        "virtualMachineSize": "Standard_D2s_v3",
+
+        "virtualMachineName": "DC-SVR",
+        "networkInterface": "[concat(variables('virtualMachineName'), '-NIC')]",
+
+        "imagePublisher": "MicrosoftWindowsServer",
+        "imageOffer": "WindowsServer",
+        "windowsOSVersion": "2019-Datacenter",
+
+        "customScriptFileName": "configure-dc.ps1",
+        "customScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Deploying-to-Azure-for-CSA/main/Hands-on-Lab/scripts/', variables('customScriptFileName'))]"
+    },
+    "resources": [
+        {
+            "name": "[variables('networkInterface')]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2019-07-01",
+            "location": "[variables('location')]",
+            "dependsOn": [],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            },
+                            "privateIPAllocationMethod": "Dynamic"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "[variables('virtualMachineName')]",
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-03-01",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterface'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[variables('virtualMachineSize')]"
+                },
+                "storageProfile": {
+                    "osDisk": {
+                        "createOption": "FromImage",
+                        "name": "[concat(variables('virtualMachineName'), '-osDisk')]",
+                        "caching": "None",
+                        "managedDisk": {
+                            "storageAccountType": "StandardSSD_LRS"
+                        }
+                    },
+                    "imageReference": {
+                        "publisher": "[variables('imagePublisher')]",
+                        "offer": "[variables('imageOffer')]",
+                        "sku": "[variables('windowsOSVersion')]",
+                        "version": "latest"
+                    },
+                    "dataDisks":[
+                        {
+                            "name": "[concat(variables('virtualMachineName'), '-dataDisk')]",
+                            "caching": "None",
+                            "createOption": "Empty",
+                            "diskSizeGB": 16,
+                            "managedDisk": {
+                                "storageAccountType": "StandardSSD_LRS"
+                            },
+                            "lun": 0
+                        }
+                    ]
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterface'))]"
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[variables('virtualMachineName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]",
+                    "windowsConfiguration": {
+                        "enableAutomaticUpdates": true,
+                        "provisionVMAgent": true
+                    }
+                }
+            },
+            "resources": [
+                {
+                    "type": "extensions",
+                    "apiVersion": "2019-03-01",
+                    "name": "SetupVM",
+                    "location": "[variables('location')]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]"
+                    ],
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "CustomScriptExtension",
+                        "typeHandlerVersion": "1.9",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "fileUris": [
+                                "[variables('customScriptUri')]"
+                            ],
+                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('customScriptFileName'))]"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "outputs": {
+        "adminUsername": {
+            "type": "string",
+            "value": "[parameters('adminUsername')]"
+        }
+    }
+}
