@@ -145,7 +145,9 @@
             "apiVersion": "2019-07-01",
             "name": "[variables('sqlNetworkInterface')]",
             "location": "[variables('location')]",
-            "dependsOn": [],
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', variables('webNetworkInterface'))]"
+            ],
             "properties": {
                 "ipConfigurations": [
                     {
