@@ -108,7 +108,7 @@
         "webNetworkInterface": "[concat(parameters('webVirtualMachineName'), '-NIC')]",
 
         "webCustomScriptFileName": "configure-webvm.ps1",
-        "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Deploying-to-Azure-for-CSA/hiroyay/Hands-on-Lab/scripts/', variables('webCustomScriptFileName'))]",
+        "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Deploying-to-Azure-for-CSA/main/Hands-on-Lab/scripts/', variables('webCustomScriptFileName'))]",
 
         "sqlVirtualMachineComputerName": "[parameters('sqlVirtualMachineName')]",
         "sqlNetworkInterface": "[concat(parameters('sqlVirtualMachineName'), '-NIC')]",
@@ -116,7 +116,7 @@
         "sqlAuthenticationPassword": "Password.1!!",
 
         "sqlCustomScriptFileName": "configure-sqlvm.ps1",
-        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Deploying-to-Azure-for-CSA/hiroyay/Hands-on-Lab/scripts/', variables('sqlCustomScriptFileName'))]"
+        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Deploying-to-Azure-for-CSA/main/Hands-on-Lab/scripts/', variables('sqlCustomScriptFileName'))]"
     },
     "resources": [
         {

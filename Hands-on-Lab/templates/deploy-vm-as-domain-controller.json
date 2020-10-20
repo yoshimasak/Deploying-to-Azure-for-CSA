@@ -50,7 +50,7 @@
         "windowsOSVersion": "2019-Datacenter",
 
         "customScriptFileName": "configure-dc.ps1",
-        "customScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Deploying-to-Azure-for-CSA/hiroyay/Hands-on-Lab/scripts/', variables('customScriptFileName'))]"
+        "customScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Deploying-to-Azure-for-CSA/main/Hands-on-Lab/scripts/', variables('customScriptFileName'))]"
     },
     "resources": [
         {

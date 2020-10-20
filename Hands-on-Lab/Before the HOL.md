@@ -84,7 +84,25 @@ Oct 2020
 - **adminPassword**: パスワード
 
 ### 展開後の手動設定
-- Web サーバーに IIS を追加し、ASP.NET アプリケーションを展開
+- Web サーバー
+  - C:\_setup\set-webserver.ps1 を実行
+    - Internet Information Services をインストール
+    - ASP.NET アプリケーション（dotnet-sqldb）を wwwroot フォルダにコピー
+    - コンソール アプリケーションを C:\time-recorder フォルダにコピー
+    - hosts ファイルを C:\Windows\System32\drivers\etc にコピー
+  - IIS 管理コンソールを使用し、コピーした dotnet-sqlb をアプリケーションに変換
+  - データベース サーバー名を SQL-SVR 以外に指定した場合
+    - ASP.NET アプリケーションの Web.config の SQL Server 接続文字列を変更
+    - hosts ファイルを変更（IP アドレスが 10.1.2.4 以外の場合は、IP アドレスも変更）
+    - C:\time-recorder\time-recorder.exe.config の接続文字列を変更
+- データベース サーバー
+  - C:\_setup\set-database.ps1 を実行
+    - CloudWorkshop データベースをアタッチ
+  - SQL Server Management Studio を起動
+    - SQL 認証で アカウント SqlUser、パスワード Password.1!! で接続
+    - CloudWorkshop データベースに t1 テーブルが存在することを確認
+- Web サーバーで C:\time-recorder\time-recorder.exe を実行
+- http://<Web サーバー名>/dotnet-sqldb でアプリケーションが動作することを確認
 
 <br />
 
