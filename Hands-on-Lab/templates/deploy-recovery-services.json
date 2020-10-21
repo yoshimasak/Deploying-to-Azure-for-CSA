@@ -50,9 +50,9 @@
         {
             "type": "Microsoft.RecoveryServices/vaults/backupPolicies",
             "apiVersion": "2016-12-01",
-            "name": "[concat(parameters('vaultsName'), '/LogBackup-Every-15Minutes')]",
+            "name": "[concat(parameters('vaultName'), '/SQLServerBackupPolicy')]",
             "dependsOn": [
-                "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultsName'))]"
+                "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultName'))]"
             ],
             "properties": {
                 "backupManagementType": "AzureWorkload",
