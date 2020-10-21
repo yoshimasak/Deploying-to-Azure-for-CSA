@@ -86,7 +86,7 @@
                             "schedulePolicyType": "SimpleSchedulePolicy",
                             "scheduleRunFrequency": "Daily",
                             "scheduleRunTimes": [
-                                "2020-10-21T16:00:00Z"
+                                "2020-10-21T16:00:00"
                             ],
                             "scheduleWeeklyFrequency": 0
                         },
@@ -94,7 +94,7 @@
                             "retentionPolicyType": "LongTermRetentionPolicy",
                             "dailySchedule": {
                                 "retentionTimes": [
-                                    "2020-10-21T16:00:00Z"
+                                    "2020-10-21T16:00:00"
                                 ],
                                 "retentionDuration": {
                                     "count": 7,
