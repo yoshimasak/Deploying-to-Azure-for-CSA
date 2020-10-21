@@ -19,17 +19,11 @@
             "metadata": {
                 "description": "ストレージの冗長オプション"
             }
-        },
-        "backupSchedule":{
-            "type": "string",
-            "defaultValue": "[utcNow('u')]",
-            "metadata": {
-                "description": "バックアップ開始時間"
-            }
         }
     },
     "variables": {
-        "location": "[resourceGroup().location]"
+        "location": "[resourceGroup().location]",
+        "backupSchedule": "[dateTimeAdd(utcNow(), 'PT1H')]"
     },
     "resources": [
         {
@@ -77,7 +71,7 @@
                             "schedulePolicyType": "SimpleSchedulePolicy",
                             "scheduleRunFrequency": "Daily",
                             "scheduleRunTimes": [
-                                "[parameters('backupSchedule')]"
+                                "[variables('backupSchedule')]"
                             ],
                             "scheduleWeeklyFrequency": 0
                         },
@@ -85,7 +79,7 @@
                             "retentionPolicyType": "LongTermRetentionPolicy",
                             "dailySchedule": {
                                 "retentionTimes": [
-                                    "[parameters('backupSchedule')]"
+                                    "[variables('backupSchedule')]"
                                 ],
                                 "retentionDuration": {
                                     "count": 7,
