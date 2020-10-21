@@ -22,7 +22,7 @@
         },
         "backupSchedule":{
             "type": "string",
-            "defaultValue": "[utcNow()]",
+            "defaultValue": "[utcNow('u')]",
             "metadata": {
                 "description": "バックアップ開始時間"
             }
