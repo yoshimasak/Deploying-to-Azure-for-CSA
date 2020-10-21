@@ -19,11 +19,18 @@
             "metadata": {
                 "description": "ストレージの冗長オプション"
             }
+        },
+        "baseTime":{
+            "type": "string",
+            "defaultValue": "[utcNow('u')]",
+            "metadata": {
+                "description": "バックアップ開始時間"
+            }
         }
     },
     "variables": {
         "location": "[resourceGroup().location]",
-        "backupSchedule": "[dateTimeAdd(utcNow(), 'PT1H')]"
+        "backupSchedule": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
     },
     "resources": [
         {
