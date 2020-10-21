@@ -85,17 +85,13 @@
                         "schedulePolicy": {
                             "schedulePolicyType": "SimpleSchedulePolicy",
                             "scheduleRunFrequency": "Daily",
-                            "scheduleRunTimes": [
-                                "[parameters('scheduleRunTimes')]"
-                            ],
+                            "scheduleRunTimes": "[parameters('scheduleRunTimes')]",
                             "scheduleWeeklyFrequency": 0
                         },
                         "retentionPolicy": {
                             "retentionPolicyType": "LongTermRetentionPolicy",
                             "dailySchedule": {
-                                "retentionTimes": [
-                                    "[parameters('scheduleRunTimes')]"
-                                ],
+                                "retentionTimes": "[parameters('scheduleRunTimes')]",
                                 "retentionDuration": {
                                     "count": 7,
                                     "durationType": "Days"
