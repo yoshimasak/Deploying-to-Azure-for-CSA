@@ -14,7 +14,7 @@
             "defaultValue": "GeoRedundant",
             "allowedValues": [
                 "LocallyRedundant",
-                "GetRedundant"
+                "GeoRedundant"
             ],
             "metadata": {
                 "description": "ストレージの冗長オプション"
@@ -62,47 +62,47 @@
                     "isCompression": false,
                     "issqlcompression": false
                 },
-                "protectedItemsCount": 0
-            },
-            "subProtectionPolicy": [
-                {
-                    "policyType": "Full",
-                    "schedulePolicy": {
-                        "schedulePolicyType": "SimpleSchedulePolicy",
-                        "scheduleRunFrequency": "Daily",
-                        "scheduleRunTimes": [
-                            "2020-10-19T10:00:00Z"
-                        ],
-                        "scheduleWeeklyFrequency": 0
-                    },
-                    "retentionPolicy": {
-                        "retentionPolicyType": "LongTermRetentionPolicy",
-                        "dailySchedule": {
-                            "retentionTimes": [
+                "protectedItemsCount": 0,
+                "subProtectionPolicy": [
+                    {
+                        "policyType": "Full",
+                        "schedulePolicy": {
+                            "schedulePolicyType": "SimpleSchedulePolicy",
+                            "scheduleRunFrequency": "Daily",
+                            "scheduleRunTimes": [
                                 "2020-10-19T10:00:00Z"
                             ],
+                            "scheduleWeeklyFrequency": 0
+                        },
+                        "retentionPolicy": {
+                            "retentionPolicyType": "LongTermRetentionPolicy",
+                            "dailySchedule": {
+                                "retentionTimes": [
+                                    "2020-10-19T10:00:00Z"
+                                ],
+                                "retentionDuration": {
+                                    "count": 7,
+                                    "durationType": "Days"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "policyType": "Log",
+                        "schedulePolicy": {
+                            "schedulePolicyType": "LogSchedulePolicy",
+                            "scheduleFrequencyInMins": 15
+                        },
+                        "retentionPolicy": {
+                            "retentionPolicyType": "SimpleRetentionPolicy",
                             "retentionDuration": {
                                 "count": 7,
                                 "durationType": "Days"
                             }
                         }
                     }
-                },
-                {
-                    "policyType": "Log",
-                    "schedulePolicy": {
-                        "schedulePolicyType": "LogSchedulePolicy",
-                        "scheduleFrequencyInMins": 15
-                    },
-                    "retentionPolicy": {
-                        "retentionPolicyType": "SimpleRetentionPolicy",
-                        "retentionDuration": {
-                            "count": 7,
-                            "durationType": "Days"
-                        }
-                    }
-                }
-            ]
+                ]
+            }
         }
     ]
 }
