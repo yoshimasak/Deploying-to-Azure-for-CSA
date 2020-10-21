@@ -117,10 +117,21 @@ Oct 2020
 <br />
 
 ## Task 5: Azure Backup のプロビジョニング
-SQL Server on VM のバックアップを構成
+Recovery Services の作成とSQL Server on VM のバックアップを構成
+
+### パラメーター
+- **vaultName**: Recovery Services の名前
+- **storageType**: バックアップ ストレージの冗長オプション (GeoRedundant)
+- **scheduleRunTimes**: バックアップの取得時間 (yyyy-mm-ddThh:00:00.000Z)
+- **timeZone**: タイムゾーン (Tokyo Standard Time)
 
 <br />
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-recovery-services.json)
 
 ### 展開後の手動設定
+- バックアップ構成の **リージョンをまたがる復元** を有効化
+- SQL Server 仮想マシンのバックアップを構成
+  - サーバー: SQL-SVR (上記手順で作成したデータベース サーバー)
+  - バックアップ対象のデータベース: CloudWorkshop
+  - ポリシー: SQLServerBackupPolicy (Recovery Services 作成時に作成、日時の完全バックアップ、15 分ごとのログバックアップ、保持期間 7 日)
