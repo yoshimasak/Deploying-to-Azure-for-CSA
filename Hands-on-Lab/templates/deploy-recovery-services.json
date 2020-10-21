@@ -83,41 +83,49 @@
                     {
                         "policyType": "Full",
                         "schedulePolicy": {
-                            "schedulePolicyType": "SimpleSchedulePolicy",
-                            "scheduleRunFrequency": "Daily",
-                            "scheduleRunTimes": [
-                                "2020-10-21T21:00:00Z"
-                            ]
+                          "schedulePolicyType": "SimpleSchedulePolicy",
+                          "scheduleRunFrequency": "Daily",
+                          "scheduleRunTimes": [
+                            "2020-10-21T17:00:00Z"
+                          ],
+                          "scheduleWeeklyFrequency": 0
                         },
                         "retentionPolicy": {
-                            "retentionPolicyType": "LongTermRetentionPolicy",
-                            "dailySchedule": {
-                                "retentionTimes": [
-                                    "2020-10-21T21:00:00Z"
-                                ],
-                                "retentionDuration": {
-                                    "count": 7,
-                                    "durationType": "Days"
-                                }
+                          "retentionPolicyType": "LongTermRetentionPolicy",
+                          "dailySchedule": {
+                            "retentionTimes": [
+                              "2020-10-21T17:00:00Z"
+                            ],
+                            "retentionDuration": {
+                              "count": 30,
+                              "durationType": "Days"
                             }
-                        },
-                        "timeZone": "[parameters('timeZone')]"
-                    },
-                    {
+                          },
+                          "weeklySchedule": {
+                            "daysOfTheWeek": "[parameters('daysOfTheWeek')]",
+                            "retentionTimes": [ "2020-10-21T17:00:00Z" ],
+                            "retentionDuration": {
+                              "count": "[parameters('weeklyRetentionDurationCount')]",
+                              "durationType" : "Weeks"
+                            }
+                          }
+                        }
+                      },
+                      {
                         "policyType": "Log",
                         "schedulePolicy": {
-                            "schedulePolicyType": "LogSchedulePolicy",
-                            "scheduleFrequencyInMins": 15
+                          "schedulePolicyType": "LogSchedulePolicy",
+                          "scheduleFrequencyInMins": 60
                         },
                         "retentionPolicy": {
-                            "retentionPolicyType": "SimpleRetentionPolicy",
-                            "retentionDuration": {
-                                "count": 7,
-                                "durationType": "Days"
-                            }
+                          "retentionPolicyType": "SimpleRetentionPolicy",
+                          "retentionDuration": {
+                            "count": 30,
+                            "durationType": "Days"
+                          }
                         }
-                    }
-                ]
+                      }
+                           ]
             }
         }
     ]
