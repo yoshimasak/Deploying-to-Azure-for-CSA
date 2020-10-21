@@ -21,8 +21,10 @@
             }
         },
         "scheduleRunTimes":{
-            "type": "string",
-            "defaultValue": "2020-01-01T10:00:00Z",
+            "type": "array",
+            "defaultValue": [
+                "2020-01-01T10:00:00Z"
+            ],
             "metadata": {
                 "description": "バックアップ開始時間"
             }
