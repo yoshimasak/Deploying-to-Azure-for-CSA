@@ -22,7 +22,7 @@ Oct 2020
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-resource-group.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fmain%2FHands-on-Lab%2Ftemplates%2Fdeploy-resource-group.json)
 
 <br />
 
@@ -44,7 +44,7 @@ Oct 2020
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-vnet-three-subnets-with-bastion.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fmain%2FHands-on-Lab%2Ftemplates%2Fdeploy-vnet-three-subnets-with-bastion.json)
 
 <br />
 
@@ -60,7 +60,7 @@ Oct 2020
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-as-domain-controller.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fmain%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-as-domain-controller.json)
 
 ### 展開後の手動設定
 - 仮想マシン展開後のドメイン コントローラーへの昇格
@@ -88,7 +88,7 @@ Oct 2020
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-web-and-sql.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2main%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-web-and-sql.json)
 
 
 ### 展開後の手動設定
@@ -110,9 +110,17 @@ Oct 2020
     - SQL 認証で アカウント SqlUser、パスワード Password.1!! で接続
     - CloudWorkshop データベースに t1 テーブルが存在することを確認
 - Web サーバーで C:\time-recorder\time-recorder.exe を実行
+  - t1 テーブルにレコードが登録されることを確認
+  - Ctrl + C で終了
 - http://<Web サーバー名>/dotnet-sqldb でアプリケーションが動作することを確認
 
 <br />
 
 ## Task 5: Azure Backup のプロビジョニング
 SQL Server on VM のバックアップを構成
+
+<br />
+
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fhiroyay%2FHands-on-Lab%2Ftemplates%2Fdeploy-recovery-services-sql.json)
+
+### 展開後の手動設定

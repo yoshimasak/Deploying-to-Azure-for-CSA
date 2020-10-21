@@ -1,0 +1,108 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vaultName": {
+            "type": "String",
+            "defaultValue": "RecoveryServicesVault",
+            "metadata": {
+                "description": "Recovery Services の名前"
+            }
+        },
+        "storageType":{
+            "type": "string",
+            "defaultValue": "GeoRedundant",
+            "allowedValues": [
+                "LocallyRedundant",
+                "GetRedundant"
+            ],
+            "metadata": {
+                "description": "ストレージの冗長オプション"
+            }
+        }
+    },
+    "variables": {
+        "location": "[resourceGroup().location]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-02-02",
+            "type": "Microsoft.RecoveryServices/vaults",
+            "name": "[parameters('vaultName')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "RS0",
+                "tier": "Standard"
+            },
+            "properties": {}
+        },
+        {
+            "apiVersion": "2020-02-02",
+            "type": "Microsoft.RecoveryServices/vaults/backupstorageconfig",
+            "name": "[concat(parameters('vaultName'), '/vaultstorageconfig')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.RecoveryServices/vaults/', parameters('vaultName'))]"
+            ],
+            "properties": {
+                "StorageModelType": "[parameters('storageType')]"
+            }
+        },
+        {
+            "type": "Microsoft.RecoveryServices/vaults/backupPolicies",
+            "apiVersion": "2016-12-01",
+            "name": "[concat(parameters('vaultsName'), '/LogBackup-Every-15Minutes')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultsName'))]"
+            ],
+            "properties": {
+                "backupManagementType": "AzureWorkload",
+                "workLoadType": "SQLDataBase",
+                "settings": {
+                    "timeZone": "JST",
+                    "isCompression": false,
+                    "issqlcompression": false
+                },
+                "protectedItemsCount": 0
+            },
+            "subProtectionPolicy": [
+                {
+                    "policyType": "Full",
+                    "schedulePolicy": {
+                        "schedulePolicyType": "SimpleSchedulePolicy",
+                        "scheduleRunFrequency": "Daily",
+                        "scheduleRunTimes": [
+                            "2020-10-19T10:00:00Z"
+                        ],
+                        "scheduleWeeklyFrequency": 0
+                    },
+                    "retentionPolicy": {
+                        "retentionPolicyType": "LongTermRetentionPolicy",
+                        "dailySchedule": {
+                            "retentionTimes": [
+                                "2020-10-19T10:00:00Z"
+                            ],
+                            "retentionDuration": {
+                                "count": 7,
+                                "durationType": "Days"
+                            }
+                        }
+                    }
+                },
+                {
+                    "policyType": "Log",
+                    "schedulePolicy": {
+                        "schedulePolicyType": "LogSchedulePolicy",
+                        "scheduleFrequencyInMins": 15
+                    },
+                    "retentionPolicy": {
+                        "retentionPolicyType": "SimpleRetentionPolicy",
+                        "retentionDuration": {
+                            "count": 7,
+                            "durationType": "Days"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
