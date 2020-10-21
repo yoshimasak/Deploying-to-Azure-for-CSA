@@ -134,4 +134,5 @@ Recovery Services の作成とSQL Server on VM のバックアップを構成
 - SQL Server 仮想マシンのバックアップを構成
   - サーバー: SQL-SVR (上記手順で作成したデータベース サーバー)
   - バックアップ対象のデータベース: CloudWorkshop
-  - ポリシー: SQLServerBackupPolicy (Recovery Services 作成時に作成、日時の完全バックアップ、15 分ごとのログバックアップ、保持期間 7 日)
+  - ポリシー: SQLServerBackupPolicy  
+   (Recovery Services 作成時に作成、日時の完全バックアップ、15 分ごとのログバックアップ、保持期間 7 日)
