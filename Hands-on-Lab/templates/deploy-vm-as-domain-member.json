@@ -2,12 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "vnetResourceGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "仮想ネットワークのリソース グループ名"
-            }
-        },
         "virtualNetworkId": {
             "type": "string",
             "metadata": {
@@ -89,7 +83,7 @@
         "location": "[resourceGroup().location]",
 
         "vnetId": "[parameters('virtualNetworkId')]",
-        "subnetRef": "[resourceID(parameters('vnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('virtualNetworkId'), parameters('subnetName'))]",
+        "subnetRef": "[resourceID(resourceGroup().name, 'Microsoft.Network/virtualNetWorks/subnets', parameters('virtualNetworkId'), parameters('subnetName'))]",
 
         "networkInterface": "[concat(parameters('virtualMachineName'), '-NIC')]",
 

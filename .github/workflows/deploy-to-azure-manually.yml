@@ -1,4 +1,4 @@
-name: Deployment VNet with Azure Bastion
+name: Deploy ARM Template
 
 on:
   workflow_dispatch:
@@ -11,16 +11,21 @@ on:
         required: false
 
 jobs:
-  build:
+  deploy-virtual-machine-template:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout source code
+        uses: actions/checkout@master
 
-      - name: Run a one-line script
-        run: echo Resource Group Name - ${{ github.event.inputs.resourceGroupName }}
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Deploy ARM Template
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az deployment group create --resource-group ${{ github.event.inputs.resourceGroupName }} --template-file ./Hands-oon-Lab/templates/deploy-vm-as-domain-member.json --parameters ./Hands-on-Lab/parameters/deploy-vm-as-domain-member.parameters.json
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project
