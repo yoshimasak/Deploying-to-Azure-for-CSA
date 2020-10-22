@@ -6,9 +6,6 @@ on:
       resourceGroupName:
         description: Resource Group Name
         required: true
-      location:
-        description: Location
-        required: false
 
 jobs:
   deploy-virtual-machine-template:
