@@ -9,7 +9,7 @@
             "value": "Subnet-3"
         },
         "virtualMachineName": {
-            "value": ""
+            "value": "TEST-SVR"
         },
         "windowsOSVersion": {
             "value": "2019-Datacenter"
@@ -21,7 +21,7 @@
             "value": "mcw.local"
         },
         "domainUsername": {
-            "value": "domainAdmin@mcw.local"
+            "value": "domainAdmin"
         },
         "domainPassword": {
             "value": "Password.1!!"
