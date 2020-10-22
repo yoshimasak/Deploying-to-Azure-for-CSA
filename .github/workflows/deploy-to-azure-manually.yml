@@ -6,9 +6,6 @@ on:
       resourceGroupName:
         description: Resource Group Name
         required: true
-      location:
-        description: Location
-        required: false
 
 jobs:
   deploy-virtual-machine-template:
@@ -27,5 +24,5 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az deployment group create --resource-group ${{ github.event.inputs.resourceGroupName }} --template-file ./Hands-oon-Lab/templates/deploy-vm-as-domain-member.json --parameters ./Hands-on-Lab/parameters/deploy-vm-as-domain-member.parameters.json
+            az deployment group create --resource-group ${{ github.event.inputs.resourceGroupName }} --template-file ./Hands-on-Lab/templates/deploy-vm-as-domain-member.json --parameters ./Hands-on-Lab/parameters/deploy-vm-as-domain-member.parameters.json
 
