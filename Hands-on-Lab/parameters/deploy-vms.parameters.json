@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnetResourceGroup": {
+            "value": ""
+        },
+        "virtualNetworkId": {
+            "value": "VNet2"
+        },
+        "subnetName": {
+            "value": "Subnet-1"
+        },
+        "webVirtualMachineName": {
+            "value": "Web-SVR"
+        },
+        "webOSVersion": {
+            "value": "2019-Datacenter"
+        },
+        "webVMSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "sqlVirtualMachineName": {
+            "value": "SQL-SVR"
+        },
+        "sqlVersion": {
+            "value": "SQL2019-WS2019"
+        },
+        "sqlVMSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "adminUsername": {
+            "value": "AzureUser"
+        },
+        "adminPassword": {
+            "value": "Password.1!!"
+        }
+    }
+}
