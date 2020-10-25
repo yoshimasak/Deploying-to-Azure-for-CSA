@@ -17,8 +17,8 @@ Oct 2020
 ## Task 1: リソース グループのプロビジョニング
 
 ### パラメーター
-- **Resource Group Name**: リソース グループ名
-- **Location**: リージョン
+- **resourceGroupName**: リソース グループ名
+- **location**: リージョン
 
 <br />
 
