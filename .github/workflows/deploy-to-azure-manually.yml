@@ -1,4 +1,4 @@
-name: Deploy ARM Template
+ame: Deploy ARM Template -Domain member servern
 
 on:
   workflow_dispatch:

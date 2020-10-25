@@ -1,0 +1,26 @@
+ame: Deploy ARM Template -Resource Group, Virtual Network, Virtual Machines
+
+on:
+  push:
+    branches: [ hiroyay ]
+    paths:
+      - 'Hands-on-Lab/parameters/**.json'
+
+env:
+  AZURE_RESOURCEGROUP: ${{ secret.AZURE_RESOURCEGROUP }}
+
+jobs:
+  deploy-azure-resource-manager-templates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@master
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Run a one-line script
+        run: echo ${{ env.AZURE_RESOURCEGROUP }}
