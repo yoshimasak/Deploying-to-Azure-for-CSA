@@ -1,4 +1,4 @@
-ame: Deploy ARM Template -Resource Group, Virtual Network, Virtual Machines
+name: Deploy ARM Template -Resource Group, Virtual Network, Virtual Machines
 
 on:
   push:
