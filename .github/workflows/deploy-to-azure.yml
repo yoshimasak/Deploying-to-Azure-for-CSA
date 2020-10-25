@@ -2,9 +2,8 @@ name: Deploy ARM Template -Resource Group, Virtual Network, Virtual Machines
 
 on:
   push:
-    branches: [ hiroyay ]
     paths:
-      - 'Hands-on-Lab/parameters/**.json'
+      - 'Hands-on-Lab/parameters//**'
 
 env:
   AZURE_RESOURCEGROUP: ${{ secrets.AZURE_RESOURCEGROUP }}
@@ -33,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deploy-azure-resource-group]
 
-    step:
+    steps:
       - name: Login to Azure
       uses: azure/login@v1
       with:
@@ -50,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deploy-azure-virtual-network]
 
-    step:
+    steps:
       - name: Login to Azure
       uses: azure/login@v1
       with:
