@@ -1,7 +1,7 @@
 name: Deploy ARM Template -Resource Group, Virtual Network, Virtual Machines
 
 on:
-  push:
+  pull_request:
     paths:
       - 'Hands-on-Lab/parameters/**'
 
