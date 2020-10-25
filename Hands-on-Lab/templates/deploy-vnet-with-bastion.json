@@ -125,7 +125,7 @@
               "name": "Ipconfig",
               "properties": {
                 "subnet": {
-                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('AzureBastionSubnet')]"
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName', parameters('AzureBastionSubnet'))]"
                 },
                 "publicIPAddress": {
                   "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('bastionIPAddress'))]"
