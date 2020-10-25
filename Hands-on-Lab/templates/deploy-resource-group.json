@@ -2,13 +2,13 @@
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-      "Resource Group Name": {
+      "resourceGroupName": {
         "type": "string",
         "metadata": {
           "description": "リソースグループ名"
         }
       },
-      "Location": {
+      "location": {
         "type": "string",
         "metadata": {
           "description": "リージョン"
@@ -20,8 +20,8 @@
       {
         "type": "Microsoft.Resources/resourceGroups",
         "apiVersion": "2019-10-01",
-        "name": "[parameters('Resource Group Name')]",
-        "location": "[parameters('Location')]",
+        "name": "[parameters('resourceGroupName')]",
+        "location": "[parameters('location')]",
         "properties": {}
       }
     ],

@@ -160,7 +160,7 @@
                 {
                     "type": "extensions",
                     "apiVersion": "2015-06-15",
-                    "name": "JoinDomainWebVM",
+                    "name": "JoinDomainVM",
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"

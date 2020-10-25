@@ -3,28 +3,28 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualNetworkId": {
-            "value": "VNet1"
+            "value": "VNet2"
         },
         "subnetName": {
-            "value": "Subnet-3"
+            "value": "Subnet-1"
         },
-        "virtualMachineName": {
-            "value": "TEST-SVR"
+        "webVirtualMachineName": {
+            "value": "Web-SVR-2"
         },
-        "windowsOSVersion": {
+        "webOSVersion": {
             "value": "2019-Datacenter"
         },
-        "virtualMachineSize": {
+        "webVMSize": {
             "value": "Standard_D2s_v3"
         },
-        "domainToJoin": {
-            "value": "mcw.local"
+        "sqlVirtualMachineName": {
+            "value": "SQL-SVR"
         },
-        "domainUsername": {
-            "value": "domainAdmin"
+        "sqlVersion": {
+            "value": "SQL2019-WS2019"
         },
-        "domainPassword": {
-            "value": "Password.1!!"
+        "sqlVMSize": {
+            "value": "Standard_D2s_v3"
         },
         "adminUsername": {
             "value": "AzureUser"
