@@ -43,7 +43,9 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy ARM Template (Virtual Network with Bastion)
-        run: echo ${{ env.AZURE_RESOURCEGROUP }}
+        with:
+          inlineScript: |
+            az deployment group create --resource-group ${{ env.AZURE_RESOURCEGROUP }} --template-file ./Hands-on-Lab/templates/deploy-vnet-with-bastion.json --parameters ./Hands-on-Lab/parameters/deploy-vnet-with-bastion.parameters.json
 
       - name: Logout from Azure
         run: |
@@ -60,7 +62,9 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy ARM Template (Virtual Machines)
-        run: echo ${{ env.AZURE_RESOURCEGROUP }}
+        with:
+          inlineScript: |
+            az deployment group create --resource-group ${{ env.AZURE_RESOURCEGROUP }} --template-file ./Hands-on-Lab/templates/deploy-vms.json --parameters ./Hands-on-Lab/parameters/deploy-vms.parameters.json
 
       - name: Logout from Azure
         run: |
