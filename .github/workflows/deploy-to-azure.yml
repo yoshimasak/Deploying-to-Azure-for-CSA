@@ -26,7 +26,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az deployment group create --name ${{ env.AZURE_RESOURCEGROUP }} --location ${{ env.AZURE_LOCATION }}
+            az group create --name ${{ env.AZURE_RESOURCEGROUP }} --location ${{ env.AZURE_LOCATION }}
 
       - name: Logout from Azure
         run: |
