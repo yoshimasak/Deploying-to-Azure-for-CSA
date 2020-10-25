@@ -7,7 +7,7 @@ on:
       - 'Hands-on-Lab/parameters/**.json'
 
 env:
-  AZURE_RESOURCEGROUP: ${{ secret.AZURE_RESOURCEGROUP }}
+  AZURE_RESOURCEGROUP: ${{ secrets.AZURE_RESOURCEGROUP }}
 
 jobs:
   deploy-azure-resource-manager-templates:
