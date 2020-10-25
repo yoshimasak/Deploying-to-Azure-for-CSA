@@ -117,7 +117,7 @@
         "dependsOn": [
           "[resourceId('Microsoft.Network/publicIpAddresses', variables('bastionIPAddress'))]",
           "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-          "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('AzureBastionSubnet'))]"
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('bastionSubnetName'))]"
         ],
         "properties": {
           "ipConfigurations": [
@@ -125,7 +125,7 @@
               "name": "Ipconfig",
               "properties": {
                 "subnet": {
-                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('AzureBastionSubnet'))]"
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('bastionSubnetName'))]"
                 },
                 "publicIPAddress": {
                   "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('bastionIPAddress'))]"
