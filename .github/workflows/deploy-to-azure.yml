@@ -7,6 +7,7 @@ on:
 
 env:
   AZURE_RESOURCEGROUP: ${{ secrets.AZURE_RESOURCEGROUP }}
+  AZURE_LOCATION: ${{ secrets.AZURE_LOCATION }}
 
 jobs:
   deploy-azure-resource-group:
@@ -22,7 +23,10 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy ARM Template (Resource Group)
-        run: echo ${{ env.AZURE_RESOURCEGROUP }}
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az deployment group create --name ${{ env.AZURE_RESOURCEGROUP }} --location ${{ env.AZURE_LOCATION }}
 
       - name: Logout from Azure
         run: |
