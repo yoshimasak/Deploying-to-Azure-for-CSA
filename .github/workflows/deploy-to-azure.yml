@@ -3,9 +3,9 @@ name: Deploy ARM Template -Resource Group, Virtual Network, Virtual Machines
 on:
   push:
     branches:
-      - [main]
+      - main
     paths:
-      - 'Hands-on-Lab/parameters/**'
+      - 'Hands-on-Lab/parameters/**.json'
 
 env:
   AZURE_RESOURCEGROUP: ${{ secrets.AZURE_RESOURCEGROUP }}
