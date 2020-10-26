@@ -61,8 +61,8 @@ Azure Resource Manager (ARM) テンプレートが保存されている GitHub �
 Azure Resource Manager (ARM) テンプレートが保存されている GitHub リポジトリにワークフローを作成し、Azure リソースを展開します。  
 展開する Azure リソースは、「リソース グループ」「仮想ネットワーク」「仮想マシン」の3種類です。  
 Azure リソースを展開するデータセンターは既存システムが展開されているペアのリージョンを選択してください。  
-GitHub Actions のワークフローは、Pull Request 時に実行されます。  
-Pull Request が Merge される前に2人の Reviewer から承認を得るようにします。
+GitHub Actions のワークフローは、main ブランチへの push 時に実行されます。  
+main ブランチを保護し、Pull Request が Merge される前に2人の Reviewer から承認を得るようにします。
 
 ## **Task 1**: 
 
