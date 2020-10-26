@@ -12,6 +12,7 @@ env:
 jobs:
   deploy-azure-resource-group:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@master
