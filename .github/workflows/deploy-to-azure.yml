@@ -1,7 +1,7 @@
 name: Deploy ARM Template -Resource Group, Virtual Network, Virtual Machines
 
 on:
-  push:
+  pull_request:
     paths:
       - 'Hands-on-Lab/parameters/**'
 
@@ -12,10 +12,10 @@ env:
 jobs:
   deploy-azure-resource-group:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@master
+      - uses: actions/checkout@master
 
       - name: Login to Azure
         uses: azure/login@v1
@@ -37,6 +37,8 @@ jobs:
     needs: [deploy-azure-resource-group]
 
     steps:
+      - uses: actions/checkout@master
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -57,6 +59,8 @@ jobs:
     needs: [deploy-azure-virtual-network]
 
     steps:
+      - uses: actions/checkout@master
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
