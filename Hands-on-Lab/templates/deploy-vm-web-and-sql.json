@@ -102,7 +102,6 @@
     "variables": {
         "location": "[resourceGroup().location]",
 
-        "vnetId": "[parameters('virtualNetworkId')]",
         "subnetRef": "[resourceID(parameters('vnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('virtualNetworkId'), parameters('subnetName'))]",
 
         "webNetworkInterface": "[concat(parameters('webVirtualMachineName'), '-NIC')]",
@@ -110,7 +109,6 @@
         "webCustomScriptFileName": "configure-webvm.ps1",
         "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Deploying-to-Azure-for-CSA/main/Hands-on-Lab/scripts/', variables('webCustomScriptFileName'))]",
 
-        "sqlVirtualMachineComputerName": "[parameters('sqlVirtualMachineName')]",
         "sqlNetworkInterface": "[concat(parameters('sqlVirtualMachineName'), '-NIC')]",
         "sqlAuthenticationLogin": "SqlUser",
         "sqlAuthenticationPassword": "Password.1!!",
