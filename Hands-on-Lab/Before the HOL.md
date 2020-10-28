@@ -127,10 +127,11 @@ Recovery Services の作成とSQL Server on VM のバックアップを構成
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fmain%2FHands-on-Lab%2Ftemplates%2Fdeploy-recovery-services.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fmain%2FHands-on-Lab%2Ftemplates%2Fdeploy-recovery-services-with-backup-policy.json)
 
 ### 展開後の手動設定
 - バックアップ構成の **リージョンをまたがる復元** を有効化
+- セキュリティ構成の **論理削除** を無効に設定
 - SQL Server 仮想マシンのバックアップを構成
   - サーバー: SQL-SVR (上記手順で作成したデータベース サーバー)
   - バックアップ対象のデータベース: CloudWorkshop

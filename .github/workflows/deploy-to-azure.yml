@@ -77,3 +77,21 @@ jobs:
       - name: Logout from Azure
         run: |
           az logout
+
+  deploy-azure-recovery-services:
+      run-on: ubuntu-latest
+      needs: [deploy-azure-virtual-machines]
+
+      steps:
+        - uses: actions/checkout@master
+
+        - name: Login to Azure
+          uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: Deploy ARM Template (Recovery Services)
+          uses: azure/CLI@v1
+          with:
+            inlineScript: |
+              az deployment group create --resource-group ${{ env.AZURE_RESOURCEGROUP }} --template-file ./Hands-on-Lab/templates/deploy-recovery-services.json --parameters ./Hands-on-Lab/parameters/deploy-recovery-services.parameters.json
