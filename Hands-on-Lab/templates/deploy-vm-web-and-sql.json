@@ -10,12 +10,14 @@
         },
         "virtualNetworkId": {
             "type": "string",
+            "defaultValue": "VNet1",
             "metadata": {
                 "description": "仮想マシンを展開する仮想ネットワーク名"
             }
         },
         "subnetName": {
             "type": "string",
+            "defaultValue": "Subnet-3",
             "metadata": {
                 "description": "仮想マシンを展開するサブネット名"
             }
