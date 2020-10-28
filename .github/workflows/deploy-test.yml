@@ -2,7 +2,7 @@ name: Sample
 
 on:
   push:
-    - branches: hiroyay
+    branches: hiroyay
 
 env:
   AZURE_RESOURCEGROUP: ${{ secrets.AZURE_RESOURCEGROUP }}
