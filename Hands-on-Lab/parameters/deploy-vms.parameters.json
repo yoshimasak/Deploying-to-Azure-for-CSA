@@ -9,7 +9,7 @@
             "value": "Subnet-1"
         },
         "webVirtualMachineName": {
-            "value": "Web-SVR-2"
+            "value": "Web-SVR"
         },
         "webOSVersion": {
             "value": "2019-Datacenter"

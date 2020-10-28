@@ -88,7 +88,7 @@ Oct 2020
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2main%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-web-and-sql.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FDeploying-to-Azure-for-CSA%2Fmain%2FHands-on-Lab%2Ftemplates%2Fdeploy-vm-web-and-sql.json)
 
 
 ### 展開後の手動設定
