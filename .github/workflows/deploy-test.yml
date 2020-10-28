@@ -1,8 +1,7 @@
 name: Sample
 
 on:
-  push:
-    branches: hiroyay
+  workflow_dispatch:
 
 env:
   AZURE_RESOURCEGROUP: ${{ secrets.AZURE_RESOURCEGROUP }}
