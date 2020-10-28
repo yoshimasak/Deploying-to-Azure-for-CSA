@@ -14,6 +14,7 @@ Oct 2020
   - [Task 4: 仮想マシンのプロビジョニング](#task-4-仮想マシンのプロビジョニング)
   - [Task 5: Azure Backup のプロビジョニング](#task-5-azure-backup-のプロビジョニング)
 
+<br />
 <img src="images/before-the-training.png" />
 <br />
 
