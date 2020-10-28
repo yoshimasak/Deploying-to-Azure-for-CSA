@@ -101,7 +101,7 @@ Oct 2020
   - IIS 管理コンソールを使用し、コピーした dotnet-sqlb をアプリケーションに変換
   - データベース サーバー名を SQL-SVR 以外に指定した場合
     - ASP.NET アプリケーションの Web.config の SQL Server 接続文字列を変更
-    - hosts ファイルを変更（IP アドレスが 10.1.2.5 以外の場合は、IP アドレスも変更）
+    - hosts ファイルを変更（IP アドレスが 10.1.3.5 以外の場合は、IP アドレスも変更）
     - C:\time-recorder\time-recorder.exe.config の接続文字列を変更
 - データベース サーバー
   - C:\_setup\set-database.ps1 を実行
