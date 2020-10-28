@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vaultName": {
-            "type": "String",
+            "type": "string",
             "defaultValue": "RecoveryServicesVault",
             "metadata": {
                 "description": "Recovery Services の名前"
             }
         },
-        "storageType":{
+        "storageType": {
             "type": "string",
             "defaultValue": "GeoRedundant",
             "allowedValues": [
@@ -19,22 +19,6 @@
             "metadata": {
                 "description": "ストレージの冗長オプション"
             }
-        },
-        "scheduleRunTimes":{
-            "type": "array",
-            "defaultValue": [
-                "2020-01-01T00:00:00.000Z"
-            ],
-            "metadata": {
-                "description": "バックアップ開始時間"
-            }
-        },
-        "timeZone": {
-            "type": "string",
-            "defaultValue": "Tokyo Standard Time",
-            "metadata": {
-                "description": "タイムゾーン"
-            }
         }
     },
     "variables": {
@@ -42,82 +26,28 @@
     },
     "resources": [
         {
-            "apiVersion": "2020-02-02",
-            "type": "Microsoft.RecoveryServices/vaults",
             "name": "[parameters('vaultName')]",
+            "type": "Microsoft.RecoveryServices/vaults",
+            "apiVersion": "2020-02-02",
             "location": "[variables('location')]",
             "sku": {
                 "name": "RS0",
                 "tier": "Standard"
             },
-            "properties": {}
-        },
-        {
-            "apiVersion": "2020-02-02",
-            "type": "Microsoft.RecoveryServices/vaults/backupstorageconfig",
-            "name": "[concat(parameters('vaultName'), '/vaultstorageconfig')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.RecoveryServices/vaults/', parameters('vaultName'))]"
-            ],
             "properties": {
-                "StorageModelType": "[parameters('storageType')]"
             }
         },
         {
-            "type": "Microsoft.RecoveryServices/vaults/backupPolicies",
-            "apiVersion": "2016-12-01",
-            "name": "[concat(parameters('vaultName'), '/SQLServerBackupPolicy')]",
+            "name": "[concat(parameters('vaultName'), '/vaultstorageconfig')]",
+            "type": "Microsoft.RecoveryServices/vaults/backupstorageconfig",
+            "apiVersion": "2020-02-02",
             "dependsOn": [
                 "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultName'))]"
             ],
             "properties": {
-                "backupManagementType": "AzureWorkload",
-                "workLoadType": "SQLDataBase",
-                "settings": {
-                    "timeZone": "[parameters('timeZone')]",
-                    "isCompression": false,
-                    "issqlcompression": false
-                },
-                "protectedItemsCount": 0,
-                "subProtectionPolicy": [
-                    {
-                        "policyType": "Full",
-                        "schedulePolicy": {
-                            "schedulePolicyType": "SimpleSchedulePolicy",
-                            "scheduleRunFrequency": "Daily",
-                            "scheduleRunTimes": "[parameters('scheduleRunTimes')]",
-                            "scheduleWeeklyFrequency": 0
-                        },
-                        "retentionPolicy": {
-                            "retentionPolicyType": "LongTermRetentionPolicy",
-                            "dailySchedule": {
-                                "retentionTimes": "[parameters('scheduleRunTimes')]",
-                                "retentionDuration": {
-                                    "count": 7,
-                                    "durationType": "Days"
-                                }
-                            },
-                            "weeklySchedule": null,
-                            "monthlySchedule": null,
-                            "yearlySchedule": null
-                        }
-                    },
-                    {
-                        "policyType": "Log",
-                        "schedulePolicy": {
-                            "schedulePolicyType": "LogSchedulePolicy",
-                            "scheduleFrequencyInMins": 15
-                        },
-                        "retentionPolicy": {
-                            "retentionPolicyType": "SimpleRetentionPolicy",
-                            "retentionDuration": {
-                                "count": 7,
-                                "durationType": "Days"
-                            }
-                        }
-                    }
-                ]
+                "StorageModelType": "[parameters('storageType')]"
             }
         }
-    ]
+    ],
+    "outputs": {}
 }
