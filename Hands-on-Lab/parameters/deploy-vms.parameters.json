@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualNetworkId": {
-            "value": "VNet2"
+            "value": "VNet-n"
         },
         "subnetName": {
             "value": "Subnet-1"
         },
         "webVirtualMachineName": {
-            "value": "Web-SVR"
+            "value": "Web-SVR-n"
         },
         "webOSVersion": {
             "value": "2019-Datacenter"
@@ -18,7 +18,7 @@
             "value": "Standard_D2s_v3"
         },
         "sqlVirtualMachineName": {
-            "value": "SQL-SVR"
+            "value": "SQL-SVR-n"
         },
         "sqlVersion": {
             "value": "SQL2019-WS2019"

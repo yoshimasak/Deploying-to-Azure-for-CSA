@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vaultName": {
-            "value": "RecoveryServicesVault-2"
+            "value": "RecoveryServicesVault-n"
         },
         "storageType": {
             "value": "GeoRedundant"
