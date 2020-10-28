@@ -1,0 +1,50 @@
+name: Sample
+
+on:
+  workflow_dispatch:
+
+env:
+  AZURE_RESOURCEGROUP: ${{ secrets.AZURE_RESOURCEGROUP }}
+  AZURE_LOCATION: ${{ secrets.AZURE_LOCATION }}
+      
+jobs:
+  deploy-azure-resource-group:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+      
+    steps:      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Deploy ARM Template (Resource Group)
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az group create --name ${{ env.AZURE_RESOURCEGROUP }} --location ${{ env.AZURE_LOCATION }}
+      
+      - name: Logout from Azure
+        run: |
+          az logout
+      
+  deploy-azure-virtual-network:
+    runs-on: ubuntu-latest
+    needs: [deploy-azure-resource-group]
+
+    steps:      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Deploy ARM Template (Virtual Network with Bastion)
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az deployment group create --resource-group ${{ env.AZURE_RESOURCEGROUP }} --template-file ./Hands-on-Lab/templates/deploy-vnet-with-bastion.json --parameters ./Hands-on-Lab/parameters/deploy-vnet-with-bastion.parameters.json
+      
+      - name: Logout from Azure
+        run: |
+          az logout
+      
