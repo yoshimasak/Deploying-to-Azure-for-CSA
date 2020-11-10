@@ -98,7 +98,8 @@
               "location": "[variables('location')]", 
               "name": "AzureBastionSubnet",
               "dependsOn": [
-                "[parameters('vnetName')]"
+                "[parameters('vnetName')]",
+                "[parameters('subnet3Name')]"
               ],
               "properties": {
                   "addressPrefix": "[parameters('bastionSubnetPrefix')]"
