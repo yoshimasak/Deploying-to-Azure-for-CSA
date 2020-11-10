@@ -99,7 +99,9 @@
               "name": "AzureBastionSubnet",
               "dependsOn": [
                 "[parameters('vnetName')]",
-                "[parameters('subnet3Name')]"
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnet1Name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnet2Name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnet3Name'))]"
               ],
               "properties": {
                   "addressPrefix": "[parameters('bastionSubnetPrefix')]"
