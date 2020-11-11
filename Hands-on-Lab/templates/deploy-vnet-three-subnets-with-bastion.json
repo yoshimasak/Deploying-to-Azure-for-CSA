@@ -89,63 +89,34 @@
             "addressPrefixes": [
               "[parameters('vnetAddressPrefix')]"
             ]
-          }
-        },
-        "resources": [
-          {
-              "apiVersion": "2018-10-01",
-              "type":"subnets",
-              "location": "[variables('location')]", 
+          },
+          "subnets": [
+            {
               "name": "AzureBastionSubnet",
-              "dependsOn": [
-                "[parameters('vnetName')]",
-                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnet1Name'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnet2Name'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnet3Name'))]"
-              ],
               "properties": {
-                  "addressPrefix": "[parameters('bastionSubnetPrefix')]"
+                "addressPrefix": "[parameters('bastionSubnetPrefix')]"
               }
-          },
-          {
-            "apiVersion": "2018-10-01",
-            "type": "subnets",
-            "location": "[variables('location')]",
-            "name": "[parameters('subnet1Name')]",
-            "dependsOn": [
-              "[parameters('vnetName')]"
-            ],
-            "properties": {
+            },
+            {
+              "name": "[parameters('subnet1Name')]",
+              "properties": {
                 "addressPrefix": "[parameters('subnet1Prefix')]"
-            }
-          },
-          {
-            "apiVersion": "2018-10-01",
-            "type": "subnets",
-            "location": "[variables('location')]",
-            "name": "[parameters('subnet2Name')]",
-            "dependsOn": [
-              "[parameters('vnetName')]",
-              "[parameters('subnet1Name')]"
-            ],
-            "properties": {
+              }
+            },
+            {
+              "name": "[parameters('subnet2Name')]",
+              "properties": {
                 "addressPrefix": "[parameters('subnet2Prefix')]"
+              }
+            },
+            {
+              "name": "[parameters('subnet3Name')]",
+              "properties": {
+                "addressPrefix": "[parameters('subnet3Prefix')]"
+              }
             }
-          },
-          {
-            "apiVersion": "2018-10-01",
-            "type": "subnets",
-            "location": "[variables('location')]",
-            "name": "[parameters('subnet3Name')]",
-            "dependsOn": [
-              "[parameters('vnetName')]",
-              "[parameters('subnet2Name')]"
-            ],
-            "properties":{
-              "addressPrefix": "[parameters('subnet3Prefix')]"
-            }
-          }
-        ]
+          ]
+        }
       },
       {
         "type": "Microsoft.Network/publicIpAddresses",
